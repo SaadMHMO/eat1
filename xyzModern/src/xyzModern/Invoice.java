@@ -1,4 +1,4 @@
-package eat1.eat1.project2;
+package xyzModern;
 
 public class Invoice {
     

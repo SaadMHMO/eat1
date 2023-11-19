@@ -1,7 +1,7 @@
 package xyzModern;
 
 import java.util.ArrayList;
-//hgvbjnnjnj
+
 public class Seller extends User {
       double Rate;
       ArrayList<Item> Product = new ArrayList<Item> (); 
@@ -60,7 +60,17 @@ public class Seller extends User {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+	}
 
+	@Override
+	public void setPassword(String password) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+	}
 	public ArrayList<Item> getProduct() {
 		return Product;
 	}
@@ -71,5 +81,7 @@ public class Seller extends User {
 	public void RemoveProduct(Item product) {
 		Product.remove(product);
 	}
+
+	
 
 }

@@ -95,6 +95,16 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+	}
+	@Override
+	public void setPassword(String password) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+	}
 	public double getBalance() {
 		return balance;
 	}
@@ -118,6 +128,7 @@ public class Customer extends User {
 	public void setTotalSpending(double spending) {
 		this.spending =+ spending;
 	}
+	
 	
 	
 }
