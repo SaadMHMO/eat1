@@ -1,7 +1,7 @@
 package xyzModern;
 
 import java.util.ArrayList;
-
+//hgvbjnnjnj
 public class Seller extends User {
       double Rate;
       ArrayList<Item> Product = new ArrayList<Item> (); 
