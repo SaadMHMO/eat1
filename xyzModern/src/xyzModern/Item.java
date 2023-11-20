@@ -54,11 +54,4 @@ public class Item {
 		return "Item No: " + itemNo + "\nItem Name: " + itemName + "\nPrice: $" + price + "\nQuantity: " + quantity;
 	}
 	
-	public void message() {
-		System.out.println("1) Log in  \n 2) Log out  3) Register ");
-		
-		
-		
-		
-	}
 }

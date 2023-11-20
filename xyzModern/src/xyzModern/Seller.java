@@ -1,10 +1,16 @@
 package xyzModern;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Seller extends User {
-      double Rate;
-      ArrayList<Item> Product = new ArrayList<Item> (); 
+public class Seller extends Item {
+    double Rate;
+	ArrayList<Item> Product = new ArrayList<Item> (); 
+	Scanner in;
+	public Seller(){}
+	public Seller(String itemNo, String itemName, double price, int quantity){
+		super(itemNo, itemName, price, quantity);
+	}
 	public double getRate() {
 		return Rate;
 	}
@@ -13,75 +19,42 @@ public class Seller extends User {
 		Rate = rate;
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setID(int iD) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getPhoneNumber() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setPhoneNumber(int phoneNumber) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setEmail(String email) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
-	}
-
-	@Override
-	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
-	}
+	
 	public ArrayList<Item> getProduct() {
 		return Product;
 	}
-
-	public void setProduct(Item product) {
-		Product.add(product);
+	public void RemoveProduct() {
+		in = new Scanner(System.in);
+		setProduct();
+		Item item = new Seller(getItemNo(), getItemName(), getPrice(),getQuantity());
+		Product.remove(item);
 	}
-	public void RemoveProduct(Item product) {
-		Product.remove(product);
+	public void addProduct(){
+		in = new Scanner(System.in);
+		setProduct();
+		Item item = new Seller(getItemNo(), getItemName(), getPrice(),getQuantity());
+		Product.add(item);
 	}
-
+	public void setProduct(){
+		in = new Scanner(System.in);
+		System.out.println("Enter barcode for the product: ");
+		setItemNo(in.nextLine());
+		in = new Scanner(System.in);
+		System.out.println("Enter the product name: ");
+		setItemName(in.nextLine());
+		in = new Scanner(System.in);
+		System.out.println("Enter the product price: ");
+		setPrice(in.nextDouble());
+		in = new Scanner(System.in);
+		System.out.println("Enter the product quantity: ");
+		setQuantity(in.nextInt());
+	}
+	public void displayProduct(){
+		System.out.println(Product);
+	}
+	public String toString(){
+		return super.toString();
+	}
 	
 
 }

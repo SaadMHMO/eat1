@@ -88,21 +88,30 @@ public class UserCollections extends User {
         String emailLogIn = in.nextLine();
         System.out.println("Enter your password: ");
         String passLogIn = in.nextLine();
-        for (int i = 0 ; i < registeredCust.size() && i < registeredAdmin.size() && i <registeredSeller.size()  ; i++){
-            if (registeredCust.get(i).getEmail() == emailLogIn && registeredCust.get(i).getPassword() == passLogIn){
-                //call customer interface
-                i = registeredCust.size();
-            }
-            else if (registeredAdmin.get(i).getEmail() == emailLogIn && registeredAdmin.get(i).getPassword() == passLogIn){
+        
+        for(int i = 0 ;  i < registeredAdmin.size()  ; i++){
+            System.out.println("I am Admin");
+            if (registeredAdmin.get(i).getEmail().equals(emailLogIn)  && registeredAdmin.get(i).getPassword().equals(passLogIn)){
                 //call admin interface
-                i = registeredCust.size();
+                System.out.println("you are Admine");
+                i = registeredAdmin.size();
             }
-            else if(registeredSeller.get(i).getEmail() == emailLogIn && registeredSeller.get(i).getPassword() == passLogIn){
+            
+        }
+        for(int i = 0 ; i < registeredSeller.size() ; i++){
+            System.out.println("I am Seller");
+            if(registeredSeller.get(i).getEmail().equals(emailLogIn) && registeredSeller.get(i).getPassword().equals(passLogIn)){
                 //call seller interface
-                i = registeredCust.size();
+                System.out.println("you are seller");
+                i = registeredSeller.size();
             }
-            else {
-                System.out.println("You should to register!");
+        }
+        for(int i = 0 ; i < registeredCust.size() ; i++){
+            System.out.println("I am Cust");            
+            if (registeredCust.get(i).getEmail().equals(emailLogIn) && registeredCust.get(i).getPassword().equals(passLogIn)){
+                //call customer interface
+                System.out.println("you are cust");
+                i = registeredCust.size();
             }
         }
     }
@@ -132,20 +141,20 @@ public class UserCollections extends User {
     }
     public void setUser(){
         in = new Scanner(System.in);
-        System.out.println("Enter your Password: ");
-        setPassword(in.nextLine());
-        System.out.println("Enter your Phone number: ");
-        setPhoneNumber(in.nextInt());        
-        System.out.println("Enter your Email: ");
-        
-        //setEmail(in.nextLine());
         System.out.println("Enter your name: ");
         setName(in.nextLine());
+        in = new Scanner(System.in);
         System.out.println("Enter your ID: ");
         setID(in.nextInt());
-        
-        
-        
+        in = new Scanner(System.in);
+        System.out.println("Enter your Phone number: ");
+        setPhoneNumber(in.nextInt()); 
+        in = new Scanner(System.in);     
+        System.out.println("Enter your Email: ");
+        setEmail(in.nextLine());
+        in = new Scanner(System.in);
+        System.out.println("Enter your Password: ");
+        setPassword(in.nextLine());        
     }
     @Override
     public String toString() {
