@@ -6,8 +6,11 @@ import java.util.Scanner;
 public class main {
    Item e = new Item();
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int y = in.nextInt();
+		
+		UserCollections u = new UserCollections();
+		u.register();
+		u.toString();
+		System.out.println(u.toString());
 		/*switch("1) Log in  \n 2) Log out  3) Register " + y ) {
 		
 		case 1:

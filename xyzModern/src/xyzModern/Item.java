@@ -1,7 +1,7 @@
 package xyzModern;
 
 public class Item {
-	//jnfij
+	
 	private String itemNo;
 	private String itemName;
 	private double price;
