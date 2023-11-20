@@ -132,23 +132,24 @@ public class UserCollections extends User {
     }
     public void setUser(){
         in = new Scanner(System.in);
+        System.out.println("Enter your Password: ");
+        setPassword(in.nextLine());
+        System.out.println("Enter your Phone number: ");
+        setPhoneNumber(in.nextInt());        
         System.out.println("Enter your Email: ");
-        setEmail(in.nextLine());
+        
+        //setEmail(in.nextLine());
         System.out.println("Enter your name: ");
         setName(in.nextLine());
         System.out.println("Enter your ID: ");
         setID(in.nextInt());
-        System.out.println("Enter your Password: ");
-        setPassword(in.nextLine());
-        System.out.println("Enter your Phone number: ");
-        setPhoneNumber(in.nextInt());
+        
         
         
     }
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        
         return super.toString();
     }
     

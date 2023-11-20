@@ -34,6 +34,6 @@ public abstract class User {
 		@Override
 		public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return "User name: " + Name + "\nUser ID: " + ID + "\nUser Phone Nuumber: " + PhoneNumber + "\nUser email: " + Email + "\nUser password: " + password;
 		}
 	}
