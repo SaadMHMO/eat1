@@ -1,11 +1,16 @@
 package xyzModern;
 
+import java.util.ArrayList;
+
+
 public class Item {
 	
 	private String itemNo;
 	private String itemName;
 	private double price;
 	private int quantity;
+	ArrayList<Item> Product = new ArrayList<Item> ();
+	 
 	public Item() {}
 	public Item(String itemNo, String itemName, double price, int quantity) {
 		this.itemNo = itemNo;
@@ -13,18 +18,7 @@ public class Item {
 		this.price = price;
 		this.quantity = quantity;
 	}
-	public Item(String itemNo, String itemName, int quantity) {
-		this.itemNo = itemNo;
-		this.itemName = itemName;
-		this.quantity = quantity;
-		this.price = 500.00;
-	}
-	public Item(String itemNo, String itemName) {
-		this.itemNo = itemNo;
-		this.itemName = itemName;
-		this.price = 500;
-		this.quantity = 1;
-	}
+	
 	public String getItemNo() {
 		return itemNo;
 	}
@@ -49,9 +43,12 @@ public class Item {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+
+	
 	@Override
 	public String toString() {
-		return "Item No: " + itemNo + "\nItem Name: " + itemName + "\nPrice: $" + price + "\nQuantity: " + quantity;
+		return "Item No: " + itemNo + "\nItem Name: " + itemName + "\nPrice: $" + price + "\nQuantity: " + quantity + "\n";
 	}
 	
 }

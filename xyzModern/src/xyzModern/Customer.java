@@ -1,30 +1,24 @@
 package xyzModern;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Customer extends User {
-	private String customerId;
-	private String name;
+	Scanner in ;
 	private double balance;
-	private double spending;
-	ArrayList<Item> orders = new ArrayList<Item>();
-	
+	ArrayList<User>registeredCust = new ArrayList<User>();
 	
 	public Customer() {}
-	public Customer(String custId, String name, double balance) {
-		this.customerId = custId;
-		this.name = name;
-		this.balance = balance;
-	}
-	public Customer(String custId, String name) {
-		this.customerId = custId;
-		this.name = name;
-		this.balance = 500;
+
+	public Customer(String name , int id , int phone , String email , String pass){
+		super(name, id, phone, email, pass);
 	}
 
+	
 
-	public void buyItem(Item item, int quantity) {
+
+	/*public void buyItem(Item item, int quantity) {
 		if(quantity > 0 && quantity <= item.getQuantity()) {
 			double cost = quantity * item.getPrice();
 			if(cost <= getBalance()) {
@@ -44,90 +38,96 @@ public class Customer extends User {
 		}else {
 			System.out.println("Sorry, it is out of stock!");
 		}
-	}
-	public void print() {
-		System.out.println("Customer Details:");
-		System.out.println("-----------------");
-		System.out.println(toString());
-		System.out.println("Payment History");
-		
-	}
+	}*/
 	public String toString() {
-		return "Customer Id: " + getID() + " Customer Name: " + getName() + " Balance: $" +getBalance() + "\n";
+		return super.toString();
 	}
-	@Override
-	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public void setID(int iD) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public int getPhoneNumber() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public void setPhoneNumber(int phoneNumber) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void setEmail(String email) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
-	}
-	@Override
-	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
-	}
+	
 	public double getBalance() {
 		return balance;
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	public ArrayList<Item> getOrders() {
-		return orders;
+	
+	
+	@Override
+	public String getName() {
+        return this.Name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.Name = name;
+    }
+
+    @Override
+    public int getID() {
+        return this.ID;
+    }
+
+    @Override
+    public void setID(int iD) {
+        this.ID = iD;
+    }
+
+    @Override
+    public int getPhoneNumber() {
+        return this.PhoneNumber;
+    }
+
+    @Override
+    public void setPhoneNumber(int phoneNumber) {
+        this.PhoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String getEmail() {
+        return this.Email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.Email = email;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+	@Override
+	public void Login() {
+		in = new Scanner(System.in);
+        System.out.println("enter your email: ");
+        String emailLogIn = in.nextLine();
+        System.out.println("Enter your password: ");
+        String passLogIn = in.nextLine();
+		for(int i = 0 ; i < registeredCust.size() ; i++){
+            System.out.println("I am Cust");            
+            if (registeredCust.get(i).getEmail().equals(emailLogIn) && registeredCust.get(i).getPassword().equals(passLogIn)){
+                //call customer interface
+                System.out.println("you are cust");
+                i = registeredCust.size();
+            }
+        }
 	}
-	public void setOrders(Item item) {
-		orders.add(item);
+	@Override
+	public void Logout() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'Logout'");
 	}
-	public void Invoices() {
-		System.out.println(orders);
-		System.out.println();
-		
+	@Override
+	public void Register() {
+		setUser();
+		User CUser = new Customer(getName(), getID(), getPhoneNumber(), getEmail(), getPassword());
+		registeredCust.add(CUser);
 	}
-	public double getTotalSpending() {
-		return spending;
-	}
-	public void setTotalSpending(double spending) {
-		this.spending =+ spending;
-	}
+	
 	
 	
 	
