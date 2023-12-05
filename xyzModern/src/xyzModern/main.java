@@ -1,45 +1,51 @@
 
 package xyzModern;
 
-
+import java.util.Scanner;
 
 public class main {
    
-	public static void main(String[] args){
-		
-		
-		Seller s = new Seller();
-		Orders i = new Orders();
-		i.addProduct();
-		i.addProduct();
-		i.addProduct();
-				
-		System.out.println("------------------------");		
-		i.creatOrder();
-		i.creatOrder();
-		i.creatOrder();
-		System.out.println(i.salla);
+	private UserCollections userCollections;
 
-		System.out.println("------------------------");		
-		i.invoice();
-		/*switch("1) Log in  \n 2) Log out  3) Register " + y ) {
-		
-		case 1:
-			//login
-			
-			break;
-		case 2:
-			
-			
-			break;
-			
-		case 3:
-			
-			break;
-		default:
-			System.out.println("Choose from menu!");
-		}
-*/
-	}
+    public main() {
+        this.userCollections = new UserCollections();
+    }
+
+    void run() {
+        Scanner scanner = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while (isRunning) {
+            System.out.println("XYZ Shop:");
+            System.out.println("1) Log in.");
+            System.out.println("2) Log out.");
+            System.out.println("3) Register.");
+
+            if (scanner.hasNextInt()){
+                switch (scanner.nextInt()) {
+                    case 1:
+                        userCollections.login();
+                        break;
+                    case 2:
+                        isRunning = false;
+                        break;
+                    case 3:
+                        userCollections.registerUser();
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+
+            }else{
+                System.out.println("Invalid choice. Please select a valid option.");
+                scanner.nextLine();
+            }
+        }
+        scanner.close();
+    }
+    public static void main(String[] args) {
+        main xyzShop = new main();
+        xyzShop.run();
+    }
 
 }

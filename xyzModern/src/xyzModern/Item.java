@@ -5,26 +5,21 @@ import java.util.ArrayList;
 
 public class Item {
 	
-	private String itemNo;
 	private String itemName;
 	private double price;
 	private int quantity;
-	ArrayList<Item> Product = new ArrayList<Item> ();
+	private boolean Approved;
+	
 	 
 	public Item() {}
-	public Item(String itemNo, String itemName, double price, int quantity) {
-		this.itemNo = itemNo;
+	public Item( String itemName, double price, int quantity , boolean approved) {		
 		this.itemName = itemName;
 		this.price = price;
 		this.quantity = quantity;
+		this.Approved = approved;
 	}
 	
-	public String getItemNo() {
-		return itemNo;
-	}
-	public void setItemNo(String itemNo) {
-		this.itemNo = itemNo;
-	}
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -48,7 +43,13 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return "Item No: " + itemNo + "\nItem Name: " + itemName + "\nPrice: $" + price + "\nQuantity: " + quantity + "\n";
+		return "Item Name: " + itemName + "\nPrice: $" + price + "\nQuantity: " + quantity + "\n";
+	}
+	public boolean isApproved() {
+		return Approved;
+	}
+	public void setApproved(boolean approved) {
+		Approved = approved;
 	}
 	
 }

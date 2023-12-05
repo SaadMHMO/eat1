@@ -1,4 +1,4 @@
-package xyzModern;
+/*package xyzModern;
 
 
 import java.util.Scanner;
@@ -42,4 +42,4 @@ public class ItemCollections extends Item {
 		System.out.println(Product);
 	}
 	
-}
+}*/
