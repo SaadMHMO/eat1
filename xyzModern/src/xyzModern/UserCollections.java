@@ -16,18 +16,19 @@ public class UserCollections  {
 
     private List<Customer> customers;
     private List<Seller> sellers;
-    private Admin admin = new Admin();
+    private Admin admin ;
 
     public UserCollections() {
         this.customers = new ArrayList<>();
-        this.sellers = new ArrayList<>();      
+        this.sellers = new ArrayList<>(); 
+        this.admin = new Admin(this);    
         loadUsers();
     }
 
     private void loadUsers() {
         loadCustomers();
         loadSellers();
-        
+        loadAdmins();
     }
 
     private void loadCustomers() {
@@ -44,6 +45,21 @@ public class UserCollections  {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Customers file not found. Creating a new one.");
+        }
+    }
+    private void loadAdmins() {
+        try (Scanner scanner = new Scanner(new File(ADMINS_FILE))) {
+            while (scanner.hasNext()) {
+                String username = scanner.next();
+                String password = scanner.next();
+                boolean active = scanner.nextBoolean();
+
+                Admin admin = new Admin(this);
+                admin.setActivation(active);
+                
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Admins file not found. Creating a new one.");
         }
     }
 
@@ -67,7 +83,7 @@ public class UserCollections  {
     protected void saveUsers() {
         saveCustomers();
         saveSellers();
-        
+        saveAdmins();
     }
 
     private void saveCustomers() {
@@ -142,16 +158,22 @@ public class UserCollections  {
 
         if (user != null) {
             if (user.isActiva()) {
+                
                 if (user instanceof Customer) {
                     Customer customer = (Customer) user;
                     customer.CustInterface();;
                 } else if (user instanceof Seller) {
+                    
                     Seller seller = (Seller) user;
-                    seller.sellerInterface();;
-                } else if (user instanceof Admin) {
+                    seller.sellerInterface();
+                    
+                } 
+            }
+            else if (user instanceof Admin) {
                     Admin admin = (Admin) user;
+                    setAdmin(admin);
+                    saveUsers();
                     admin.AdminInterface();
-                }
             } else {
                 System.out.println("Wait until admin gives you the permission.");
             }
@@ -169,14 +191,14 @@ public class UserCollections  {
         }
 
         for (Seller seller : getSellers()) {
+            
             if (seller.getuserName().equals(username) && seller.getPassword().equals(password)) {
                 return seller;
             }
         }
         
         if (admin.getuserName().equals(username) && admin.getPassword().equals(password)) {
-            setAdmin(admin);
-            saveUsers();
+            
             return admin;
 
         }

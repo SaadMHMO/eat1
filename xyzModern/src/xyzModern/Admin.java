@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 public class Admin extends User{
     private UserCollections userCollections;
-    public Admin(){
+    public Admin(UserCollections userCollections){
         super("shm", "shm");
         setAdmin(true);
-        
+        this.userCollections = userCollections;
 
     }
     public void AdminInterface(){
@@ -77,9 +77,11 @@ public class Admin extends User{
                 scanner.nextLine();
             }
         }
+        
     }
 
     private void displayUnactiveUsers() {
+        
         System.out.println("Inactive Users:");
 
         List<Seller> sellers = userCollections.getSellers();
@@ -110,7 +112,7 @@ public class Admin extends User{
         String usernameToActivate = scanner.next();
 
         boolean userActivated = false;
-
+        
         for (Seller seller : userCollections.getSellers()) {
             if (seller.getuserName().equals(usernameToActivate) && !seller.isActiva()) {
                 seller.setActivation(true);;
@@ -119,7 +121,7 @@ public class Admin extends User{
                 break;
             }
         }
-
+        
         for (Customer customer : userCollections.getCustomers()) {
             if (customer.getuserName().equals(usernameToActivate) && !customer.isActiva()) {
                 customer.setActivation(true);
@@ -128,11 +130,14 @@ public class Admin extends User{
                 break;
             }
         }
+        
 
         if (!userActivated) {
             System.out.println("User not found or already activated.");
         }
+        
         userCollections.saveUsers();
+        
     }
 
 

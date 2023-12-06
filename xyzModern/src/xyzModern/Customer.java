@@ -29,7 +29,7 @@ public class Customer extends User {
 		super(name, pass);
 		this.orders = new ArrayList<>();
 		this.balance = balance;
-		this.Users = Users;
+		this.userCollections = Users;
 		setCustomer(true);
 	}
 

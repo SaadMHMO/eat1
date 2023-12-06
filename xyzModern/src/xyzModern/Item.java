@@ -1,9 +1,10 @@
 package xyzModern;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Item {
+public class Item implements Serializable {
 	
 	private String itemName;
 	private double price;

@@ -1,8 +1,8 @@
 package xyzModern;
 
+import java.io.Serializable;
 
-
-public class Orders {
+public class Orders implements Serializable {
     protected Item item;
     protected int quantity;
 

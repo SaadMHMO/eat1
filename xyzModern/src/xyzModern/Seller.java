@@ -6,13 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import javax.management.loading.PrivateClassLoader;
 
-public class Seller extends User {
+public class Seller extends User implements Serializable {
     double Rate;
     String fill = "pro.txt";
 	private UserCollections userCollections;
@@ -30,8 +31,8 @@ public class Seller extends User {
 	
     public void sellerInterface(){
         Scanner in = new Scanner(System.in);
-        int i = 0;
-        while(i == 10){
+        boolean isRunning = true;
+        while (isRunning) {
             System.out.println("Seller Interface:");
             System.out.println("1) Add Product.");
             System.out.println("2) Remove Product.");
@@ -54,7 +55,7 @@ public class Seller extends User {
                     displaySellingStatistics();
                     break;
                 case 5:
-                    i = 10;
+                    isRunning = false;
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
